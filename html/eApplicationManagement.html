@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="HandheldFriendly" content="True">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="cleartype" content="on">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/yaya-template.js"></script>
+    <script src="js/basic.js"></script>
+    <script src="js/eApplicationManagement.js"></script>
+    <script src="js/cordova.js"></script>
+</head>
+<body>
+<script type="text/template" id="tempList_down">
+    {$<ul>$}
+        for(var j=0;j<sData.length;j++){
+        {$ <li code="{%sData[j].code%}">{%sData[j].name%}</li>$}
+        }
+        {$</ul>$}
+</script>
+
+<script type="text/template" id="tempList_eApplication">
+    for(var j=0;j<Elist.length;j++){
+        var txtCode=Elist[j].status;
+        switch(txtCode){
+            case '1':Elist[j].txtCode='Incomplete';break;
+            case '2':Elist[j].txtCode='To Sign';break;
+            case '3':Elist[j].txtCode='Partial Signed';break;
+            case '4':Elist[j].txtCode='Signed ';break;
+            case '5':Elist[j].txtCode='Submitted';break;
+        }
+        {$<tr cid="{%Elist[j].cid%}"  pid="{%Elist[j].pid%}" status="{%Elist[j].status%}" productName="{%Elist[j].productName%}" code="{%Elist[j].code%}" companyName="{%Elist[j].CompanyName%}" natureofBusiness="{%Elist[j].NatureofBusiness%}">
+           <td class="col1 editAPP"><span class="col1">{%Elist[j].ereferenceNo%}</span></td>
+            <td>{%Elist[j].eCompanyName%}</td><td>{%Elist[j].eproductName%}</td><td>{%Elist[j].createdDate%}</td>
+            <td>{%Elist[j].totalPremium%}</td><td>{%Elist[j].txtCode%}</td>
+        </tr>$}
+    }
+</script>
+
+<div class="contentBody">
+    <div class="ps" id="listAutoCom2">
+    </div><!-- end-->
+    <div class="pFix topA0">
+        <div class="photo">
+            <div class="psA"><a href="#"><img src="img/tx3.jpg"/></a></div>
+        </div><!--photo end-->
+        <div class="htit"><a href="#" class="fr1"><img src="img/help.png"/></a>eApplication Management</div>
+        <div class="Corporate appManagement sbA">
+            <div class="search">
+                <em>Corporate Company Name</em>
+                <div class="inq pa autocompleteLay" style="display: inline-block;">
+                    <input type="text" class="contactName cCompanyName_search"/>
+                </div>
+            </div>
+            <p class="search"><em>Period From</em><span><input type="date" name="" value="" class="startDate"/></span><strong class="space">&nbsp;</strong>To<span><input type="date" name="" value="" class="endDate" /></span></p>
+            <p class="search">
+                <em>eApplication Status</em>
+                <select class="Status">
+                    <option value="0">All</option><option value="1">Incomplete</option>
+                    <option value="2">To Sign</option><option value="3">Partial Signed</option>
+                    <option value="4">Signed</option><option value="5">Submitted</option>
+                </select>&nbsp;&nbsp;<a href="#" class="btn2 searchB2">Search</a>
+            </p>
+            <table class="dataT dTM">
+                <thead><tr><th>Reference No.</th><th>Company Name</th><th>Product Name</th><th>Created Date</th><th>Total Premium</th><th>Status</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div><!--pFix end-->
+    <div class="pFix bottomA0"><div class="htit"></div></div><!--pFix end-->
+
+    <div class="htitMsg">My Proposal - I/LASTNAME/FIRSTNAME/M@ - 007128023</div>
+    <div class="Corporate appManagement sbB">
+        <table class="dataT dTM">
+            <thead><tr><th>Reference No.</th><th>Company Name</th><th>Product Name</th><th>Created Date</th><th>Total Premium</th><th>Status</th></tr></thead>
+            <tbody></tbody>
+        </table>
+    </div><!--Corporate-->
+
+</div><!--contentBody end-->
+<style>
+.appManagement .search select{margin-left:15px;height:30px;}
+.appManagement .search input{height:25px;}
+.appManagement .search .btn2 {margin-left: 15px;top: 2px;  position: relative;}
+/***为固定定位，sbA和sbB都有dTM进行追加数据。sbA：overflow隐藏后面的表格进而显示sbB，而sbB的table进行隐藏tbody**/
+.dataT thead{background:#fff;}
+.sbA{height:190px; overflow:hidden;}
+.sbB{  margin-top: 118px;}
+</style>
+
+<style>
+/**dyc 2015.8.24***/
+th,td{  word-wrap:break-word;overflow:hidden;}
+.appManagement .search input.cCompanyName_search{margin-left:0px;}
+.autocompleteLay{padding-left:16px;}
+#listAutoCom2{left:318px;}
+#listAutoCom2,#listAutoCom2 ul,#listAutoCom2 ul li{width:517px;}
+.appManagement .search input.startDate,.appManagement .search input.endDate{width:217px;}
+</style>
+<script>
+    addEvtC2();//dyc 2015.8.24
+</script>
+</body>
+</html>
