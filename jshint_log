@@ -1,0 +1,23 @@
+webstorm 连接jshint文件 【自带插件】
+   file-setting-顶部查询框输入JSHint
+          右侧 选中Enable 以及Use config files
+          最下面，进行路径连接配置文件：D:\Program Files (x86)\JetBrains\WebStorm 10.0.3\jshintrc.json
+    jshintrc.json就是 WS的配置文件
+
+
+先install  node.js
+npm install gulp -g
+
+
+
+cmd 进入当前目录下：
+npm install gulp
+npm install jshint    [解决问题：Gulp Error: Cannot find module 'jshint/src/cli']
+npm install map-stream
+npm install gulp-jshint
+npm install gulp-file
+
+以及 package.json 进行jshint配置，并应用这个规则。。。、
+
+
+运行：gulp即可。。
